@@ -23,7 +23,7 @@ function getInitials(name) {
 
 /** Fetch and render contacts */
 async function fetchData() {
-  let res = await fetch("https://join-2aee1-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let res = await fetch("https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/.json");
   let data = await res.json();
   allContacts = Object.values(data.person || {});
   renderContacts();
@@ -114,6 +114,7 @@ function editContact(name) {
           ${getInitials(contact.name)}
         </div>
         <form class="edit-contact-form" id="contactForm" onsubmit="handleContactFormSubmit(event)">
+          <input type="hidden" id="oldContactName" value="${contact.name}">
           <div class="input-wrapper">
             <input id="inputName" value="${contact.name || ''}" required autocomplete="off" placeholder="Name">
             <img class="input-icon" src="assets/person.png" alt="Name">
@@ -137,19 +138,48 @@ function editContact(name) {
 }
 
 /** Handle form submit (add/edit) */
-function handleContactFormSubmit(event) {
+async function handleContactFormSubmit(event) {
   event.preventDefault();
-  // Hier kannst du Save/Update-Logik ergänzen
+  const name = document.getElementById("inputName").value.trim();
+  const email = document.getElementById("inputEmail").value.trim();
+  const phone = document.getElementById("inputPhone").value.trim();
+  const oldNameField = document.getElementById("oldContactName");
+
+  // Simple validation
+  if (!name || !email || !phone) return;
+
+  if (oldNameField) {
+    // === EDIT MODE ===
+    const oldName = oldNameField.value;
+    let res = await fetch("https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/person.json");
+    let data = await res.json();
+    let [key] = Object.entries(data || {}).find(([_, val]) => val.name === oldName) || [];
+    if (key) {
+      await fetch(`https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/person/${key}.json`, {
+        method: "PUT",
+        body: JSON.stringify({ name, email, phone }),
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+  } else {
+    // === CREATE MODE ===
+    await fetch("https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/person.json", {
+      method: "POST",
+      body: JSON.stringify({ name, email, phone }),
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+  await fetchData();
   closeOverlay();
 }
 
 /** Delete contact */
 async function deleteContact(name) {
-  let res = await fetch("https://join-2aee1-default-rtdb.europe-west1.firebasedatabase.app/person.json");
+  let res = await fetch("https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/person.json");
   let data = await res.json();
   let [key] = Object.entries(data || {}).find(([_, val]) => val.name === name) || [];
   if (!key) return;
-  await fetch(`https://join-2aee1-default-rtdb.europe-west1.firebasedatabase.app/person/${key}.json`, {
+  await fetch(`https://editcontactdatenbank-default-rtdb.europe-west1.firebasedatabase.app/person/${key}.json`, {
     method: "DELETE"
   });
   closeContactOverlay();
@@ -292,21 +322,20 @@ function contactAddFormTemplate() {
         <form id="contactForm" onsubmit="handleContactFormSubmit(event)">
           <div class="add-contact-form">
             <img id="contactImage" src="./svg/addContactPic.svg" class="profile-responsive-middle" alt="Contact Icon">
-            
             <div class="add-contact-form-section">
               <div class="add-contact-inputs">
                 <div class="input-wrapper">
-                  <input id="inputName" type="text" placeholder="Name">
+                  <input id="inputName" type="text" placeholder="Name" required>
                   <img src="./svg/person.svg" class="input-icon">
                   <div class="error-message"></div>
                 </div>
                 <div class="input-wrapper">
-                  <input id="inputEmail" type="text" placeholder="Email">
+                  <input id="inputEmail" type="email" placeholder="Email" required>
                   <img src="./svg/mail.svg" class="input-icon">
                   <div class="error-message"></div>
                 </div>
                 <div class="input-wrapper">
-                  <input id="inputPhone" type="text" placeholder="Phone">
+                  <input id="inputPhone" type="text" placeholder="Phone" required>
                   <img src="./svg/call.svg" class="input-icon">
                   <div class="error-message"></div>
                 </div>
@@ -330,3 +359,6 @@ function closeOverlayDirectly() {
   clearOverlay();
   closeModal("modalBackdrop");
 }
+
+// Initial load
+window.onload = fetchData;

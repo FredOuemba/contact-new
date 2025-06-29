@@ -52,16 +52,19 @@ body {
 }
 
 .contact-list:hover {
-  background-color: #f0f0f0;
+  background-color: #D2E3FF;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .contact-list.active {
-  background-color: #2a3647;
+  background-color: #4589FF;
   color: white;
   border-radius: 8px;
 }
 
+.contact-list.active .contact-email {
+  color: white;
+}
 .avatar {
   width: 36px;
   height: 36px;
@@ -119,7 +122,7 @@ a {
 }
 
 .new-contact:hover {
-  background-color: #29abe2;
+  background-color: #005DFF !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
   cursor: pointer;
@@ -421,19 +424,56 @@ body.modal-open {
 .contact-information-div {
   font-size:18px;
 }
+
+/* ==== BUTTONS: EDIT/DELETE Figma-Style ==== */
 .contact-detail-buttons {
-  background:none;
-  border:none;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2a3647;
+  transition: color 0.2s;
+  padding: 0;
 }
 
-.contact-detail-buttons:hover {
-  color:#29abe2;
+.contact-detail-buttons.edit {
+  color: #017CEE;
 }
+.contact-detail-buttons.edit img {
+  filter: brightness(0) saturate(100%) invert(36%) sepia(99%) saturate(2187%) hue-rotate(186deg) brightness(98%) contrast(101%);
+  transition: filter 0.2s;
+}
+.contact-detail-buttons.edit:hover,
+.contact-detail-buttons.edit:focus {
+  color: #0157ae;
+}
+.contact-detail-buttons.edit:hover img,
+.contact-detail-buttons.edit:focus img {
+  filter: brightness(0) saturate(100%) invert(26%) sepia(95%) saturate(1683%) hue-rotate(186deg) brightness(90%) contrast(101%);
+}
+
+.contact-detail-buttons.delete {
+  color: #2a3647;
+}
+.contact-detail-buttons.delete img {
+  filter: none;
+  transition: filter 0.2s;
+}
+.contact-detail-buttons.delete:hover,
+.contact-detail-buttons.delete:focus {
+  color: #FF3D00;
+}
+.contact-detail-buttons.delete:hover img,
+.contact-detail-buttons.delete:focus img {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(1807%) hue-rotate(355deg) brightness(102%) contrast(105%);
+}
+
+/* ====== END Figma-Style Edit/Delete ===== */
+
 .custom-dropdown {
   display:none;
 }
