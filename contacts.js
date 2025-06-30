@@ -318,22 +318,22 @@ function contactAddFormTemplate() {
       <div class="add-contact-right">
         <form id="contactForm" onsubmit="handleContactFormSubmit(event)">
           <div class="add-contact-form">
-            <img id="contactImage" src="./svg/addContactPic.svg" class="profile-responsive-middle" alt="Contact Icon">
+            <img id="contactImage" src="./assets/Frame 79.png" class="profile-responsive-middle" alt="Contact Icon">
             <div class="add-contact-form-section">
               <div class="add-contact-inputs">
                 <div class="input-wrapper">
                   <input id="inputName" type="text" placeholder="Name" required>
-                  <img src="./svg/person.svg" class="input-icon">
+                  <img src="./assets/person.png" class="input-icon">
                   <div class="error-message"></div>
                 </div>
                 <div class="input-wrapper">
                   <input id="inputEmail" type="email" placeholder="Email" required>
-                  <img src="./svg/mail.svg" class="input-icon">
+                  <img src="./assets/mail.png" class="input-icon">
                   <div class="error-message"></div>
                 </div>
                 <div class="input-wrapper">
                   <input id="inputPhone" type="text" placeholder="Phone" required>
-                  <img src="./svg/call.svg" class="input-icon">
+                  <img src="./assets/call.png" class="input-icon">
                   <div class="error-message"></div>
                 </div>
               </div>

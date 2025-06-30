@@ -138,27 +138,35 @@ a {
   height: 20px;
 }
 
-/* === CONTACT OVERLAY === */
+/* === CONTACT OVERLAY (ADD CONTACT) === */
 .add-contact-overlay {
-  position: relative;
-  top: 80px;
-  display: flex;
-  width: 1000px;
-  height: 480px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  max-width: 98vw;
+  height: 100vh;
   background-color: white;
-  border-radius: 24px;
+  border-radius: 30px 0 0 30px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out;
-  z-index: 1000;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  animation: slideInFromRight 0.6s cubic-bezier(.4,2.3,.3,1) forwards;
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); opacity: 0.2; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 .add-contact-left {
-  background-color: #2a3647;
+  background-color: #005DFF;
   color: white;
   padding: 40px;
   padding-top: 0;
-  width: 30%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,33 +176,38 @@ a {
 .add-contact-logo {
   width: 50px;
   margin-bottom: 20px;
+  position: relative;
+  top: 50px;
+  left: 200px;
 }
 
 .add-contact-left h2 {
-  font-size: 50px;
+  font-size: 40px;
   margin: 0;
+  position: relative;
+  top: 40px;
+  left: 100px;
 }
 
 .add-contact-left p {
   font-size: 16px;
   margin: 10px 0 20px;
+  position: relative;
+  top: 40px;
+  left: 100px;
 }
 
 .underline {
-  width: 60px;
-  height: 3px;
-  background-color: #29abe2;
-  margin-top: 10px;
-  border-radius: 4px;
+  margin-top: 50px;
 }
 
 .add-contact-right {
-  padding: 40px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  left: 30px;
 }
 
 .add-contact-avatar img {
@@ -226,14 +239,38 @@ a {
   font-size: 14px;
 }
 
+/* Anpassung: Nur beim .select den Pfeil-nach-unten anzeigen, sonst jeweiliges Icon */
 .input-icon {
+  display: block;
   position: absolute;
-  right: 12px;
-  top: 30%;
+  right: 16px;
+  top: 50%;
   transform: translateY(-50%);
   width: 18px;
+  height: 18px;
   opacity: 0.5;
 }
+
+.input-icon-down {
+  display: none;
+}
+
+.input-wrapper.select .input-icon-down {
+  display: block;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.input-wrapper.select .input-icon {
+  display: none;
+}
+/* Ende Anpassung */
 
 .add-contact-buttons {
   display: flex;
@@ -284,11 +321,11 @@ h2 {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0,0,0,0.24);
   z-index: 599;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .modal-backdrop.slidein-active {
   justify-content: flex-start;
@@ -359,7 +396,6 @@ body.modal-open {
   margin-top: 4px;
 }
 
-/* === ANIMATIONS === */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -411,7 +447,7 @@ body.modal-open {
   z-index: 10;
 }
 .close-btn:hover {
-  background-color: #f0f0f0;
+  background-color: #4589FF;
   border-radius: 50%;
 }
 
@@ -483,13 +519,13 @@ body.modal-open {
   margin-top: 30px;
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .add-contact-form-section {
   width: 300px;
 }
 
-/* ==== EDIT/DELETE BUTTONS: ICON UND TEXT GETRENNT HOVERBAR, KEIN KÄSTCHEN ==== */
 .contact-detail-buttons {
   background: none;
   border: none;
@@ -503,7 +539,6 @@ body.modal-open {
   cursor: pointer;
 }
 
-/* EDIT */
 .edit-icon {
   width: 18px;
   height: 18px;
@@ -521,19 +556,16 @@ body.modal-open {
   background: none;
   transition: color 0.2s;
 }
-/* Nur Icon-Edit-Hover: KEIN Hintergrund, NUR Icon wird blau! */
 .edit-icon:hover {
-background: none;
+  background: none;
   filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(1046%) hue-rotate(185deg) brightness(97%) contrast(104%);
 }
-/* Nur Text-Edit-Hover: KEIN Hintergrund, nur Textfarbe */
 .edit-label:hover {
   background: none;
   color: #4589FF;
   transform: translateX(1px);
 }
 
-/* DELETE */
 .delete-icon {
   width: 18px;
   height: 18px;
@@ -551,14 +583,12 @@ background: none;
   background: none;
   transition: color 0.2s;
 }
-/* Nur Icon-Delete-Hover: KEIN Hintergrund, NUR Icon wird rot! */
 .delete-icon:hover {
   background: none;
   filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(1046%) hue-rotate(185deg) brightness(97%) contrast(104%);
 }
-/* Nur Text-Delete-Hover: KEIN Hintergrund, nur Textfarbe */
 .delete-label:hover {
- background: none;
+  background: none;
   color: #4589FF;
   transform: translateX(1px);
 }
@@ -588,9 +618,9 @@ background: none;
   height: 100vh;
   background: #fff;
   z-index: 2000;
-  border-top-right-radius: 30px;
+  border-radius: 0 30px 30px 0;
   box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  animation: slideInLeft 0.25s cubic-bezier(.4,2.3,.3,1);
+  animation: slideInLeft 0.6s cubic-bezier(.4,2.3,.3,1);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -739,7 +769,6 @@ background: none;
 }
 .edit-contact-form .save-btn:hover {
   background-color: #005DFF;
-
 }
 
 @media (max-width: 1310px) {
@@ -772,8 +801,8 @@ background: none;
   .contactInfo-subtitle { font-size: 16px; margin-left: 15px; }
   .contactInfo-title { font-size: 24px; }
   .contact-panel { padding: 0 !important; }
-  .add-contact-overlay { width: 800px; }
-  .edit-contact-overlay-slidein { width: 100vw; border-top-right-radius: 0; }
+  .add-contact-overlay { width: 100vw; border-radius: 0; }
+  .edit-contact-overlay-slidein { width: 100vw; border-radius: 0; }
   .edit-contact-header { font-size: 26px; padding: 28px 16px 18px 16px; min-height: 88px; }
   .edit-contact-avatar { width: 60px; height: 60px; font-size: 22px; }
   .edit-contact-content { padding: 16px; }
