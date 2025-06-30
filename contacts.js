@@ -101,7 +101,6 @@ function editContact(name) {
   let contact = allContacts.find(c => c.name === name);
   clearOverlay();
   openModal("modalBackdrop");
-  // Figma-like Slide-in Overlay von LINKS
   document.getElementById("addContactForm").innerHTML = `
     <div class="edit-contact-overlay-slidein">
       <div class="edit-contact-header">
@@ -221,8 +220,6 @@ function toggleShowContactMobile(name) {
   openModal("modalBackdrop");
 }
 
-/** ===================== Overlay Template: Figma-Style ===================== */
-
 /**
  * Template generator for a contact card in the list.
  *
@@ -273,15 +270,15 @@ function contactDetailTemplate(contact) {
           <div class="show-contact-avatar" style="background:${bg};">
           ${initials}</div>
           <div><h2 style="margin:0;">${contact.name}</h2>
-          <div style="display:flex;margin-top:10px;">
-          <button onclick="editContact('${contact.name}')" class="contact-detail-buttons">
-  <img class="icon-default" src="./assets/edit.png" alt="Edit">
-   <img class="icon-hover" src="./assets/edit-blue-hover.png" alt="Edit">Edit
-</button>
-          <button onclick="deleteContact('${contact.name}')" class="contact-detail-buttons">
-            <img class="icon-default" src="./assets/delete.png" alt="Delete">
-             <img class="icon-hover" src="./assets/delete-blue-hover.png" alt="Delete">Delete
-          </button>
+          <div style="display:flex;margin-top:10px;gap:8px;">
+            <button onclick="editContact('${contact.name}')" class="contact-detail-buttons">
+              <img class="edit-icon" src="./assets/edit.png" alt="Edit">
+              <span class="edit-label">Edit</span>
+            </button>
+            <button onclick="deleteContact('${contact.name}')" class="contact-detail-buttons">
+              <img class="delete-icon" src="./assets/delete.png" alt="Delete">
+              <span class="delete-label">Delete</span>
+            </button>
           </div>
           </div>
         </div>
@@ -293,14 +290,14 @@ function contactDetailTemplate(contact) {
       </div>
        <img class="menu-contact-options" id="menu-contact-options" onclick="toggleContactMenu()" src="./svg/MenuContactOptions.svg" alt="Options">
        <div class="custom-dropdown" id="contactMenu">
-  <button onclick="editContact('${contact.name}')">
-    <img src="./svg/edit-black.svg" alt="Edit"> Edit
-  </button>
-  <button onclick="deleteContact('${contact.name}')">
-    <img src="./svg/delete.svg" alt="Delete"> Delete
-  </button>
-</div>
-`;
+        <button onclick="editContact('${contact.name}')">
+          <img src="./svg/edit-black.svg" alt=""> Edit
+        </button>
+        <button onclick="deleteContact('${contact.name}')">
+          <img src="./svg/delete.svg" alt=""> Delete
+        </button>
+      </div>
+  `;
 }
 
 /**

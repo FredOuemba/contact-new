@@ -18,14 +18,14 @@ body {
   align-items: center;
   gap: 20px;
   margin-left: 230px;
-  max-width:500px;
+  max-width: 500px;
 }
 
 .main {
   flex: 1;
   padding: 150px 50px 40px;
   background-color: #f6f7f8;
-  max-width:700px;
+  max-width: 700px;
 }
 
 .contact-panel {
@@ -65,6 +65,7 @@ body {
 .contact-list.active .contact-email {
   color: white;
 }
+
 .avatar {
   width: 36px;
   height: 36px;
@@ -76,17 +77,21 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  margin-left:5%;
+  margin-left: 5%;
   border: 1px solid white;
   aspect-ratio: 1/1;
 }
+
 a {
-  color:#017cee;
+  color: #017cee;
 }
+
 .contact-info-headline {
- display:flex;
- align-items: center;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
+
 .contactInfo-title {
   font-size: 56px;
   font-weight: bold;
@@ -98,9 +103,9 @@ a {
   margin-left: 20px;
   border-left: 3px solid #2196f3;
   padding-left: 20px;
-  height:40px;
-  display:flex;
-  align-items:center;
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
 /* === BUTTONS === */
@@ -109,8 +114,8 @@ a {
   color: white;
   border-radius: 8px;
   width: 80%;
-  min-height:50px;
-  max-height:50px;
+  min-height: 50px;
+  max-height: 50px;
   font-weight: bold;
   font-size: 20px;
   border: none;
@@ -198,7 +203,7 @@ a {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ccc;
-  position:fixed;
+  position: fixed;
 }
 
 .add-contact-inputs {
@@ -235,9 +240,11 @@ a {
   gap: 20px;
   margin-top: 30px;
 }
+
 h2 {
   font-size: 40px;
 }
+
 .cancel-btn,
 .create-btn {
   padding: 12px 20px;
@@ -256,7 +263,7 @@ h2 {
 
 .cancel-btn:hover {
   border-color: #29abe2;
-  color:#29abe2;
+  color: #29abe2;
 }
 
 .create-btn {
@@ -272,6 +279,7 @@ h2 {
   font-size: 20px;
   font-weight: 100;
 }
+
 /* === MODAL === */
 .modal-backdrop {
   position: fixed;
@@ -327,19 +335,21 @@ body.modal-open {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
+
 .contact-group-letter {
   border-bottom: 1px solid rgba(0, 0, 0, 0.179);
   padding: 30px;
   font-size: 24px;
-  margin-left:15%;
+  margin-left: 15%;
 }
+
 .contact-email {
   font-size: 18px;
   color: #0077cc;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  overflow-x:hidden;
-  max-width:150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  max-width: 150px;
 }
 
 .error-message {
@@ -406,9 +416,9 @@ body.modal-open {
 }
 
 .profile-responsive-middle {
-  height:120px;
-  padding:20px;
-  margin-right:30px;
+  height: 120px;
+  padding: 20px;
+  margin-right: 30px;
 }
 .contact-info-box {
   display: flex;
@@ -418,64 +428,15 @@ body.modal-open {
 }
 
 .menu-contact-options {
-  display:none;
+  display: none;
 }
 
 .contact-information-div {
-  font-size:18px;
+  font-size: 18px;
 }
-
-/* ==== BUTTONS: EDIT/DELETE Figma-Style ==== */
-.contact-detail-buttons {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #2a3647;
-  transition: color 0.2s;
-  padding: 0;
-}
-
-.contact-detail-buttons.edit {
-  color: #017CEE;
-}
-.contact-detail-buttons.edit img {
-  filter: brightness(0) saturate(100%) invert(36%) sepia(99%) saturate(2187%) hue-rotate(186deg) brightness(98%) contrast(101%);
-  transition: filter 0.2s;
-}
-.contact-detail-buttons.edit:hover,
-.contact-detail-buttons.edit:focus {
-  color: #0157ae;
-}
-.contact-detail-buttons.edit:hover img,
-.contact-detail-buttons.edit:focus img {
-  filter: brightness(0) saturate(100%) invert(26%) sepia(95%) saturate(1683%) hue-rotate(186deg) brightness(90%) contrast(101%);
-}
-
-.contact-detail-buttons.delete {
-  color: #2a3647;
-}
-.contact-detail-buttons.delete img {
-  filter: none;
-  transition: filter 0.2s;
-}
-.contact-detail-buttons.delete:hover,
-.contact-detail-buttons.delete:focus {
-  color: #FF3D00;
-}
-.contact-detail-buttons.delete:hover img,
-.contact-detail-buttons.delete:focus img {
-  filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(1807%) hue-rotate(355deg) brightness(102%) contrast(105%);
-}
-
-/* ====== END Figma-Style Edit/Delete ===== */
 
 .custom-dropdown {
-  display:none;
+  display: none;
 }
 
 .show-contact-avatar {
@@ -513,67 +474,99 @@ body.modal-open {
 }
 
 .contact-name-box {
-  display:flex;
-  align-items:center;
-  gap:20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .add-contact-form {
-  margin-top:30px; 
-  display:flex; 
-  align-items:center;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .add-contact-form-section {
-  width:300px;
-}
-.icon-hover {
-  display: none;
-}
-.contact-detail-buttons:hover .icon-default {
-  display: none;
-}
-.contact-detail-buttons:hover .icon-hover {
-  display: inline;
+  width: 300px;
 }
 
-.contact-detail-buttons img {
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
-}
-
-.input-wrapper input:focus {
-  border: 1px solid #29abe2;
-  outline: none;
-}
-
-.edit-contact-buttons {
+/* ==== EDIT/DELETE BUTTONS: ICON UND TEXT GETRENNT HOVERBAR, KEIN KÄSTCHEN ==== */
+.contact-detail-buttons {
+  background: none;
+  border: none;
   display: flex;
-  gap: 20px;
-  margin-top: 30px;
-  justify-content: center;
-}
-.delete-btn {
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
-  border: 1px solid transparent;
-  background-color: white;
-  border: 1px solid #2a3647;
+  padding: 0 4px;
   color: #2a3647;
+  cursor: pointer;
 }
-.delete-btn:hover {
-  border-color: #29abe2;
-  color: #29abe2;
+
+/* EDIT */
+.edit-icon {
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  border-radius: 5px;
+  margin-right: 2px;
+  vertical-align: middle;
+  background: none;
+  transition: filter 0.2s;
+}
+.edit-label {
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: #2a3647;
+  background: none;
+  transition: color 0.2s;
+}
+/* Nur Icon-Edit-Hover: KEIN Hintergrund, NUR Icon wird blau! */
+.edit-icon:hover {
+background: none;
+  filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(1046%) hue-rotate(185deg) brightness(97%) contrast(104%);
+}
+/* Nur Text-Edit-Hover: KEIN Hintergrund, nur Textfarbe */
+.edit-label:hover {
+  background: none;
+  color: #4589FF;
+  transform: translateX(1px);
+}
+
+/* DELETE */
+.delete-icon {
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  border-radius: 5px;
+  margin-right: 2px;
+  vertical-align: middle;
+  background: none;
+  transition: filter 0.2s;
+}
+.delete-label {
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: #2a3647;
+  background: none;
+  transition: color 0.2s;
+}
+/* Nur Icon-Delete-Hover: KEIN Hintergrund, NUR Icon wird rot! */
+.delete-icon:hover {
+  background: none;
+  filter: brightness(0) saturate(100%) invert(42%) sepia(94%) saturate(1046%) hue-rotate(185deg) brightness(97%) contrast(104%);
+}
+/* Nur Text-Delete-Hover: KEIN Hintergrund, nur Textfarbe */
+.delete-label:hover {
+ background: none;
+  color: #4589FF;
+  transform: translateX(1px);
 }
 
 .save-btn {
   padding: 12px 20px;
   border-radius: 8px;
-  font-size: 14px; 
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   border: 1px solid transparent;
@@ -609,7 +602,7 @@ body.modal-open {
 }
 
 .edit-contact-header {
-  background: #007AFF;
+  background: #005DFF;
   color: #fff;
   padding: 44px 32px 32px 32px;
   font-size: 36px;
@@ -620,6 +613,7 @@ body.modal-open {
   gap: 16px;
   position: relative;
   min-height: 90px;
+  flex-direction: column;
 }
 
 .edit-contact-header img {
@@ -655,6 +649,8 @@ body.modal-open {
 }
 
 .edit-contact-avatar {
+  position: relative;
+  top: 60px;
   width: 88px;
   height: 88px;
   border-radius: 50%;
@@ -676,6 +672,8 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+  top: 80px;
 }
 
 .edit-contact-form .input-wrapper {
@@ -745,34 +743,34 @@ body.modal-open {
 
 @media (max-width: 1310px) {
   .contact-list {
-    margin:0 10px;
-    gap:30px;
+    margin: 0 10px;
+    gap: 30px;
   }
   .contact-group-letter {
-    margin-left:0;
+    margin-left: 0;
   }
-  .contactInfo-title { font-size:40px; }
+  .contactInfo-title { font-size: 40px; }
   .contactInfo-subtitle { font-size: 20px; }
   .main { padding: 150px 30px 40px; }
-  .show-contact-avatar { height:80px; width:80px; font-size:40px; }
-  h2 { font-size:32px; }
+  .show-contact-avatar { height: 80px; width: 80px; font-size: 40px; }
+  h2 { font-size: 32px; }
 }
-@media (max-width:1000px) {
-  .new-contact { height:90px; font-size:18px; margin-top:10px; }
-  .left-side { width:250px; padding: 100px 10px 10px; }
-  .contact-group-letter { font-size:20px; }
-  .contact-name { font-size:18px; }
-  .contact-email { font-size:16px; }
-  .contact-info-box h2 { font-size:20px; }
-  .contact-name-box { gap:0; }
-  .show-contact-avatar { height:60px; width:60px; font-size:24px; }
-  .contact-email{ word-break: break-word; overflow-wrap: break-word; }
-  .main { padding:150px 12px 12px; }
-  .avatar { margin-left:0; }
-  .contact-list { margin:0 0; }
-  .contactInfo-subtitle { font-size:16px; margin-left:15px; }
-  .contactInfo-title{ font-size:24px; }
-  .contact-panel{ padding:0 !important; }
+@media (max-width: 1000px) {
+  .new-contact { height: 90px; font-size: 18px; margin-top: 10px; }
+  .left-side { width: 250px; padding: 100px 10px 10px; }
+  .contact-group-letter { font-size: 20px; }
+  .contact-name { font-size: 18px; }
+  .contact-email { font-size: 16px; }
+  .contact-info-box h2 { font-size: 20px; }
+  .contact-name-box { gap: 0; }
+  .show-contact-avatar { height: 60px; width: 60px; font-size: 24px; }
+  .contact-email { word-break: break-word; overflow-wrap: break-word; }
+  .main { padding: 150px 12px 12px; }
+  .avatar { margin-left: 0; }
+  .contact-list { margin: 0 0; }
+  .contactInfo-subtitle { font-size: 16px; margin-left: 15px; }
+  .contactInfo-title { font-size: 24px; }
+  .contact-panel { padding: 0 !important; }
   .add-contact-overlay { width: 800px; }
   .edit-contact-overlay-slidein { width: 100vw; border-top-right-radius: 0; }
   .edit-contact-header { font-size: 26px; padding: 28px 16px 18px 16px; min-height: 88px; }
