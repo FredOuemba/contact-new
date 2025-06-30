@@ -730,7 +730,7 @@ background: none;
   color: #007AFF;
 }
 .edit-contact-form .save-btn {
-  background-color: #007AFF;
+  background-color: #4589FF;
   color: #fff;
   border: none;
   display: flex;
@@ -738,7 +738,8 @@ background: none;
   gap: 8px;
 }
 .edit-contact-form .save-btn:hover {
-  background-color: #005fc3;
+  background-color: #005DFF;
+
 }
 
 @media (max-width: 1310px) {
